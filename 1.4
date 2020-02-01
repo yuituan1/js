@@ -1,0 +1,53 @@
+var x = y = min = r = o = u = B = Bt = 0;
+var Bet = Base = Min = xL = 0;
+var m = m1 = m2= 0;
+
+B = $("#balance").val();
+m1 = B;
+Bet = B *0.2;
+Base = B * 1.02;
+Min = B * 0.001;
+
+	function roll(min,r,o,u){
+		$("#clientSeed").val(m);
+		$("#betAmount").val(min);
+		Bt = B;
+		if((r % 2)==0){
+			$("#prediction").val(u);
+			$("#rollUnder").trigger('click');
+		}
+		else{
+			$("#prediction").val(o);
+			$("#rollOver").trigger('click');
+		}
+		$("#playBtn").trigger('click');
+	}
+	
+
+	function M(){
+		m = B / m1;
+		m = m - 1;
+		m = m * 100;
+		$("#resetStats").trigger('click');
+
+	}
+
+	function startGame(){
+		B = $("#balance").val();
+		M();
+x = Math.floor((Math.random() * 2) + 1);
+		if(( B > Base) || ( Min > Bet )){
+			location.reload();
+		}
+		else if( B >= Bt){
+			Min = Min;
+		}
+		else if( B < Bt){
+				Min = Min * 2;
+			}
+			roll(Min,x,55,55);
+Bt = B;
+	}
+	
+	var start = setInterval(startGame,1000);
+
